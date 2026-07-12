@@ -1,0 +1,23 @@
+# Frontend
+Frontend/node_modules/
+Frontend/dist/
+
+# Backend
+Backend/target/
+Backend/.classpath
+Backend/.project
+Backend/.settings/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# Spring Boot secrets
+Backend/src/main/resources/application-local.properties
+Backend/src/main/resources/application-secret.properties
