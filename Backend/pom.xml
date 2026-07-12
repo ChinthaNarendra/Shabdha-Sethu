@@ -38,6 +38,13 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+<!-- Vosk -->
+<dependency>
+    <groupId>com.alphacephei</groupId>
+    <artifactId>vosk</artifactId>
+    <version>0.3.45</version>
+</dependency>
+
 		<!-- Spring Data JPA -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
