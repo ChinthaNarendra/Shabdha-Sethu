@@ -1,6 +1,8 @@
 package com.shabdhasethu.service;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,22 +16,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
 public class SpeechService {
 
-    private static Model englishModel;
+    private Model englishModel;
 
-    static {
+    private synchronized Model getModel() throws Exception {
 
-        try {
+        if (englishModel == null) {
+
+            System.out.println("Loading Vosk Model...");
 
             englishModel =
                     new Model("model/English/vosk-model-en-us-0.22-lgraph");
 
-        }
-        catch (Exception e) {
-
-            e.printStackTrace();
-
+            System.out.println("Vosk Model Loaded Successfully");
         }
 
+        return englishModel;
     }
 
     public String convertSpeech(MultipartFile file) {
@@ -43,7 +44,6 @@ public class SpeechService {
             File convertedFile = File.createTempFile("converted", ".wav");
 
             ProcessBuilder pb = new ProcessBuilder(
-
                     "ffmpeg",
                     "-loglevel", "quiet",
                     "-y",
@@ -51,9 +51,7 @@ public class SpeechService {
                     "-ac", "1",
                     "-ar", "16000",
                     "-acodec", "pcm_s16le",
-                    convertedFile.getAbsolutePath()
-
-            );
+                    convertedFile.getAbsolutePath());
 
             Process process = pb.start();
 
@@ -64,7 +62,7 @@ public class SpeechService {
             ais.skip(44);
 
             Recognizer recognizer =
-                    new Recognizer(englishModel, 16000);
+                    new Recognizer(getModel(), 16000);
 
             byte[] buffer = new byte[4096];
 
