@@ -2,6 +2,19 @@
 
 Shabdha Sethu is an AI-powered Speech Translation Web Application that enables users to convert speech to text, translate text into multiple languages, listen to translated text, and maintain translation history. The application is built using React.js for the frontend and Spring Boot for the backend, with Google Gemini AI handling intelligent translations.
 
+
+---
+
+## 🚀 Live Demo
+
+### 🌍 Frontend
+https://shabdha-sethu.vercel.app
+
+### ⚙️ Backend API
+https://shabdha-sethu-backend.onrender.com
+
+---
+
 ---
 
 ## 🚀 Features
