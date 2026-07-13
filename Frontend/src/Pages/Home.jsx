@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Home.css";
+import API_BASE from "../config";
 
 function Home() {
 
@@ -26,7 +27,7 @@ function Home() {
     try {
 
         const response = await fetch(
-            "http://localhost:8080/translate/history",
+            `${API_BASE}/translate/history`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -132,7 +133,7 @@ const translateText = async () => {
     try {
 
         const response = await fetch(
-            "http://localhost:8080/translate",
+            `${API_BASE}/translate`,
             {
                 method: "POST",
 
@@ -280,7 +281,7 @@ const clearHistory = async () => {
     try {
 
         const response = await fetch(
-            "http://localhost:8080/translate/history",
+            `${API_BASE}/translate/history`,
             {
                 method: "DELETE",
 
@@ -364,7 +365,7 @@ const clearHistory = async () => {
 
       const response = await fetch(
 
-        "http://localhost:8080/api/speech-to-text",
+        `${API_BASE}/api/speech-to-text`,
 
         {
 
